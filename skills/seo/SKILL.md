@@ -51,6 +51,7 @@ extension is also installable (see "Optional Extensions" below).
 | `/seo firecrawl [command] <url>` | Full-site crawling and site mapping (extension) |
 | `/seo dataforseo [command]` | Live SEO data via DataForSEO (extension) |
 | `/seo image-gen [use-case] <description>` | AI image generation for SEO assets (extension) |
+| `/seo video-gen [use-case] <description>` | AI video generation via Gemini Omni (hero loops, reels, product motion) |
 | `/seo flow [stage] [url\|topic]` | FLOW framework: evidence-led prompts for Find, Leverage, Optimize, Win, or Local stages |
 
 ## Orchestration Logic
@@ -157,6 +158,7 @@ Do NOT show the footer after:
 - `/seo programmatic` (quick analysis)
 - `/seo dataforseo` (data fetching utility)
 - `/seo image-gen` (asset generation)
+- `/seo video-gen` (asset generation)
 - Context intake questions (before analysis starts)
 - Error messages or "missing data" prompts
 
@@ -196,8 +198,8 @@ Weighted aggregate of all categories:
 
 ## Sub-Skills
 
-This skill orchestrates 24 sub-skills (21 core + 1 framework integration + 2 extension
-mirrors). The orchestrator itself (`seo`) is the 25th in `skills/`, but does not
+This skill orchestrates 25 sub-skills (22 core + 1 framework integration + 2 extension
+mirrors). The orchestrator itself (`seo`) is the 26th in `skills/`, but does not
 orchestrate itself, so it is not enumerated below.
 
 1. **seo-audit** -- Full website audit with parallel delegation
@@ -223,7 +225,8 @@ orchestrate itself, so it is not enumerated below.
 21. **seo-ecommerce** -- E-commerce SEO intelligence (contributed by Matej Marjanovic)
 22. **seo-dataforseo** -- Live SEO data via DataForSEO MCP (extension mirror)
 23. **seo-image-gen** -- AI image generation for SEO assets via Gemini (extension mirror)
-24. **seo-flow** -- FLOW framework integration (Find -> Leverage -> Optimize -> Win, 41 AI prompts, CC BY 4.0)
+24. **seo-video-gen** -- AI video generation via Gemini Omni (hero loops, reels, product motion; Google API)
+25. **seo-flow** -- FLOW framework integration (Find -> Leverage -> Optimize -> Win, 41 AI prompts, CC BY 4.0)
 
 ### Optional Extensions
 
@@ -255,6 +258,7 @@ For parallel analysis during audits:
 - `seo-flow` -- FLOW framework prompts (conditional: spawned for content strategy workflows)
 - `seo-dataforseo` -- Live SERP, keyword, backlink, local SEO data (extension, optional)
 - `seo-image-gen` -- SEO image audit and generation plan (extension, optional)
+- `seo-video-gen` -- SEO video audit and Gemini Omni prompt plan (conditional: spawned when Google API key with Omni access detected)
 
 ## Error Handling
 

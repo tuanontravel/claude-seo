@@ -160,6 +160,7 @@ claude
 | `/seo firecrawl [command] <url>` | Full-site crawling (extension) |
 | `/seo dataforseo [command]` | Live SEO data (extension) |
 | `/seo image-gen [use-case]` | AI image generation for SEO assets (extension) |
+| `/seo video-gen [use-case]` | AI video generation via Gemini Omni (hero loops, reels, product motion) |
 
 ## Features
 
