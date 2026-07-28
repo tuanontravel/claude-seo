@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **Video generation:** `seo-video-gen` skill (`/seo video-gen`), `agents/seo-video-gen.md` (audit-only video analyst), and `scripts/gemini_video.py` — AI video generation via Google's Gemini Omni model for hero background loops, vertical reels, product motion shots, and explainer clips. Goes directly to the Gemini API and reuses the existing `seo-google` credential setup (`google_auth.get_api_key` + `validate_url`), so no new secret store and no third-party aggregator dependency. Stdlib-only client with two API modes (async `predictLongRunning` + poll/download, or conversational `generateContent`), SSRF-validated image-to-video input, and a configurable model id (`--model` / `GEMINI_VIDEO_MODEL`).
+
 ## [2.0.0] - 2026-05-17
 
 v2 is backward-compatible by design — every v1.x command, script signature, and skill entry point still works. The release lands a hardened SSRF + DNS-rebinding safety layer, shared headless rendering across every fetcher, QRG-aligned content gates, four new Schema.org generators, five new MCP extensions, and multi-platform portability. Full narrative in [`docs/MIGRATION-v1-to-v2.md`](docs/MIGRATION-v1-to-v2.md).

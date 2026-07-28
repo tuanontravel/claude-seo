@@ -4,11 +4,11 @@
 
 This repository contains **Claude SEO**, a Tier 4 Claude Code skill for comprehensive
 SEO analysis across all industries. It follows the Agent Skills open standard and the
-3-layer architecture (directive, orchestration, execution). 25 sub-skills (21 core +
-1 orchestrator + 1 framework integration + 2 extension mirrors), 18 sub-agents (15 core +
+3-layer architecture (directive, orchestration, execution). 26 sub-skills (22 core +
+1 orchestrator + 1 framework integration + 2 extension mirrors), 19 sub-agents (16 core +
 1 framework integration + 2 extension mirrors), and an extensible reference
 system cover technical SEO, content quality,
-schema markup, image optimization, sitemap architecture, AI search optimization,
+schema markup, image optimization, video generation, sitemap architecture, AI search optimization,
 local SEO (GBP, citations, reviews, map pack), maps intelligence, semantic topic
 clustering, search experience optimization (SXO), SEO drift monitoring, e-commerce
 SEO, and international SEO with cultural adaptation profiles.
@@ -62,7 +62,10 @@ claude-seo/
     seo-image-gen/              # AI image generation for SEO assets (extension mirror)
       SKILL.md
       references/                # Image gen reference files (7 files)
-  agents/                          # 18 subagents (auto-discovered)
+    seo-video-gen/              # AI video generation via Gemini Omni (Google API)
+      SKILL.md
+      references/                # Omni models + video prompt engineering (2 files)
+  agents/                          # 19 subagents (auto-discovered)
     seo-technical.md             # Crawlability, indexability, security
     seo-content.md               # E-E-A-T, readability, thin content
     seo-schema.md                # Structured data validation
@@ -76,13 +79,14 @@ claude-seo/
     seo-backlinks.md             # Backlink profile analyst (Moz, Bing, CC, verify)
     seo-dataforseo.md            # DataForSEO data analyst
     seo-image-gen.md             # SEO image audit analyst
+    seo-video-gen.md             # SEO video audit + prompt-plan analyst
     seo-cluster.md               # Semantic clustering analysis
     seo-sxo.md                   # Search experience optimization
     seo-drift.md                 # SEO drift monitoring
     seo-ecommerce.md             # E-commerce SEO analysis
   hooks/                           # Quality gate hooks
     hooks.json                   # PostToolUse schema validation
-  scripts/                         # Python execution scripts (30 tracked + 2 dev-only)
+  scripts/                         # Python execution scripts (31 tracked + 2 dev-only)
     google_auth.py               # Credential management (OAuth, SA, API key, 4-tier detection)
     backlinks_auth.py            # Backlink API credential management (Moz, Bing)
     moz_api.py                   # Moz Link Explorer API (DA/PA, spam, domains, anchors)
@@ -103,6 +107,7 @@ claude-seo/
     parse_html.py                # HTML parser for SEO elements
     capture_screenshot.py        # Playwright screenshots
     analyze_visual.py            # Visual analysis helper
+    gemini_video.py              # Gemini Omni video generation (stdlib, reuses google_auth)
     drift_baseline.py            # SEO drift baseline capture (SQLite)
     drift_compare.py             # SEO drift comparison engine (17 rules)
     drift_report.py              # SEO drift HTML report generator
@@ -151,6 +156,7 @@ claude-seo/
 | `/seo firecrawl [command] <url>` | Full-site crawling and site mapping (extension) |
 | `/seo dataforseo [command]` | Live SEO data via DataForSEO MCP (extension) |
 | `/seo image-gen [use-case] <desc>` | AI image generation for SEO assets (extension) |
+| `/seo video-gen [use-case] <desc>` | AI video generation via Gemini Omni (hero loops, reels, product motion) |
 
 ## Development Rules
 
